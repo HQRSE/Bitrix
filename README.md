@@ -1,2 +1,3 @@
-# Bitrix
-Methods and experiments for Bitrix CMS
+# Bitrix sorted IDs
+Берем из txt ID и раскидываем по разделам
+После ласт коммита будет готово
