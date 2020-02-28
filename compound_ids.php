@@ -21,6 +21,7 @@ foreach ($glob as $file) {
 
 	//echo $real_file."<br>";
 
+/*
 	if ($real_file == 'ids3per.txt') {
 
 		$section = $three_percent_section;
@@ -32,6 +33,7 @@ foreach ($glob as $file) {
 		$section = $ten_percent_section;
 
 	}
+*/
 
 $filename = $real_file;
 
@@ -40,7 +42,7 @@ echo $filename."<br>";
 }
 
 //echo $filename."<br>";
-	
+
 /*
 echo "<pre>";
 print_r($glob);
