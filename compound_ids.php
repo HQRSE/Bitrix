@@ -7,70 +7,30 @@ $APPLICATION->SetTitle("compound_ids");
 
 <?
 
-$three_percent_section = 2019;
-
-$five_percent_section = 2020;
-
-$ten_percent_section = 2021;
-
-$glob = glob("/home/h911249072/web-ohotaktiv.online/docs/12dev/promo/*.txt");
-
-foreach ($glob as $file) {
-
-	$real_file = basename($file);
-
-	//echo $real_file."<br>";
-
-/*
-	if ($real_file == 'ids3per.txt') {
-
-		$section = $three_percent_section;
-
-	} elseif ($real_file == 'ids5per.txt') {
-		$section = $five_percent_section;
-
-	}elseif ($real_file == 'ids10per.txt') {
-		$section = $ten_percent_section;
-
-	}
-*/
-
-$filename = $real_file;
-
-echo $filename."<br>";
-
-}
-
-//echo $filename."<br>";
-
-/*
-echo "<pre>";
-print_r($glob);
-echo "</pre>";
-*/
-/*
-	$content = file ('3_percent_ids.txt');
+	$content = file ('ids3per.txt'); // Файл с айдишками
 	foreach ($content as $line) {
 		$result = explode (',', $line);
 	}
-*/
-	$end = 10; //count($id);
-
-	$step = 2;
 
 	$id = $result; //array('14509','5930'); 
 
-	$iblock_id = 10;
+	$end = 10; //count($id); // Конец выполнения цикла
 
-	$i = $_GET['i']; //0;
+	$step = 2; // Шаг цикла
+
+	$section = 2018; // ID раздела
+
+	$iblock_id = 10; // ID ИБ
+
+	$i = $_GET['i']; //0; // Счетчик шагов
 
 	$sec_ids = [];
 
-	while ( $end > $i) {
+	while ( $end > $i ) {
 
 		$ElementId = $id[$i];
 
-   		$db_groups = CIBlockElement::GetElementGroups($ElementId, true);
+   		$db_groups = CIBlockElement::GetElementGroups($ElementId, true); // Узнаю каким разделам товар уже принадлежит
 
     		while($ar_group = $db_groups->Fetch()) {
 
@@ -78,29 +38,29 @@ echo "</pre>";
 
 			}
 
-		if (!in_array($three_percent_section, $sec_ids)) {
+		if (!in_array($section, $sec_ids)) { // Есть ли там мой раздел?
 
 			$sec_ids[] = $section;
 
 		}
-		/*
+
 		$el = new CIBlockElement;
 		$arLoadProductArray = Array(
 		"IBLOCK_SECTION" => $sec_ids
 		);
 		$PRODUCT_ID = $id[$i];
-		$res = $el->Update($PRODUCT_ID, $arLoadProductArray);
+		$res = $el->Update($PRODUCT_ID, $arLoadProductArray); // Привязываю раздел
 
 		$i++;
 
 		$z = $i%$step;
 
-		if ($z == 0) {
+		if ($z == 0) { // Закончился шаг цикла?
 			$i++;
 			header("refresh: 2; url=/12dev/promo/compound_ids.php?i=$i");
 			break;
-	} 
-		*/
+		} 
+
 }
 
 echo "i: ".$i."<br>";
