@@ -18,7 +18,7 @@ $APPLICATION->SetTitle("compound_ids");
 
 	$step = 2; // Шаг цикла
 
-	$section = 2018; // ID раздела
+	$section = 2018; // ID добавляемого раздела
 
 	$iblock_id = 10; // ID ИБ
 
